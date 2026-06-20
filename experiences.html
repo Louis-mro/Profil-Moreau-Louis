@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expériences — Louis Moreau</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-eyebrow { color: var(--coral); }
+
+  .choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .choice-card {
+    border-radius: var(--radius);
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1px solid transparent;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    cursor: pointer;
+    background: var(--surface);
+  }
+  .choice-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(0,0,0,0.28); }
+
+  .choice-card.coral { border-left: 4px solid var(--coral-line); }
+  .choice-card.amber { border-left: 4px solid #E0B23E; }
+
+  .choice-top { display: flex; align-items: center; justify-content: space-between; }
+  .choice-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 21px;
+  }
+  .choice-card.coral .choice-icon { background: var(--coral-bg); color: var(--coral); }
+  .choice-card.amber .choice-icon { background: #FBF1DC; color: #B5832A; }
+
+  .choice-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-faint);
+  }
+
+  .choice-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0;
+  }
+  .choice-card.coral h3 { color: var(--coral); }
+  .choice-card.amber h3 { color: #B5832A; }
+
+  .choice-card p.desc {
+    font-size: 13.5px;
+    color: var(--text-soft);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .choice-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 2px; }
+  .choice-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .choice-card.coral .choice-tag { background: var(--coral-bg); color: var(--coral); }
+  .choice-card.amber .choice-tag { background: #FBF1DC; color: #B5832A; }
+
+  .choice-link {
+    font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; gap: 5px;
+    margin-top: 4px;
+  }
+  .choice-card.coral .choice-link { color: var(--coral); }
+  .choice-card.amber .choice-link { color: #B5832A; }
+
+  @media (max-width: 700px) {
+    .choice-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body class="page-experiences">
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span> Louis Moreau</div>
+    <nav class="main-nav">
+      <a href="index.html">accueil</a>
+      <a href="parcours.html">parcours</a>
+      <a href="experiences.html" class="active experiences">expériences</a>
+      <a href="competences.html">compétences</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow page-eyebrow">Module 02 — terrain</p>
+    <h1 class="page-title">Expériences</h1>
+    <p class="subtitle">Deux types de parcours, deux pages : missions techniques d'un côté, jobs d'été et engagement personnel de l'autre.</p>
+
+    <div class="choice-grid">
+
+      <a class="choice-card coral" href="experiences-pro.html">
+        <div class="choice-top">
+          <div class="choice-icon">&#9881;&#65039;</div>
+          <span class="choice-count">3 expériences</span>
+        </div>
+        <h3>Expériences professionnelles</h3>
+        <p class="desc">Alternance et stages en automatisme : programmation, robotisation et méthodes industrielles chez Akena Vérandas et O'Hara.</p>
+        <div class="choice-tags">
+          <span class="choice-tag">TIA Portal</span>
+          <span class="choice-tag">Robotisation</span>
+          <span class="choice-tag">Méthodes</span>
+        </div>
+        <span class="choice-link">voir le détail &rarr;</span>
+      </a>
+
+      <a class="choice-card amber" href="experiences-saisonnieres.html">
+        <div class="choice-top">
+          <div class="choice-icon">&#9728;&#65039;</div>
+          <span class="choice-count">3 expériences</span>
+        </div>
+        <h3>Expériences saisonnières</h3>
+        <p class="desc">Jobs d'été en restauration et en grande surface, et engagement volontaire en préparation militaire.</p>
+        <div class="choice-tags">
+          <span class="choice-tag">Service client</span>
+          <span class="choice-tag">Rigueur</span>
+          <span class="choice-tag">Esprit d'équipe</span>
+        </div>
+        <span class="choice-link">voir le détail &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Louis Moreau</p>
+    <div class="footer-icons">
+      <a href="tel:+33671780595" aria-label="téléphone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a href="mailto:moreaulouis37@gmail.com" aria-label="email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.97 6.2a2 2 0 0 0 2.06 0L22 7"/></svg>
+      </a>
+      <a href="https://instagram.com/louis__mro_" aria-label="instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

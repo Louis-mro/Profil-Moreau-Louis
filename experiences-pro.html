@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expériences professionnelles — Louis Moreau</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-eyebrow { color: var(--coral); }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-soft);
+    margin-bottom: 18px;
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--coral); }
+  .exp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .exp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--coral-line);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+  .exp-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--coral);
+    white-space: nowrap;
+    padding-top: 3px;
+    min-width: 110px;
+  }
+  .exp-body { flex: 1; }
+  .exp-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0 0 3px;
+  }
+  .exp-org { font-size: 13.5px; color: var(--text-soft); margin: 0 0 12px; }
+  .exp-desc { font-size: 13.5px; color: var(--text-soft); line-height: 1.65; margin: 0 0 14px; }
+  .exp-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .exp-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--coral-bg);
+    color: var(--coral);
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  @media (max-width: 600px) {
+    .exp-card { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body class="page-experiences">
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span> Louis Moreau</div>
+    <nav class="main-nav">
+      <a href="index.html">accueil</a>
+      <a href="parcours.html">parcours</a>
+      <a href="experiences.html" class="active experiences">expériences</a>
+      <a href="competences.html">compétences</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <a class="back-link" href="experiences.html">&larr; toutes les expériences</a>
+    <p class="eyebrow page-eyebrow">Module 02a — terrain industriel</p>
+    <h1 class="page-title">Expériences professionnelles</h1>
+    <p class="subtitle">Alternance et stages en lien avec l'automatisme et les méthodes industrielles.</p>
+
+    <div class="exp-grid">
+
+      <div class="exp-card">
+        <p class="exp-period">Sept. 2026<br>— en cours</p>
+        <div class="exp-body">
+          <p class="exp-title">Ingénieur méthode — Alternance</p>
+          <p class="exp-org">Akena Vérandas, Dompierre-sur-Yon</p>
+          <p class="exp-desc">Alternance de 3 ans au sein du service méthodes. Optimisation des procédés de fabrication, programmation d'équipements automatisés et participation à la robotisation des lignes de production.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">TIA Portal</span>
+            <span class="exp-tag">Control Expert</span>
+            <span class="exp-tag">Méthodes industrielles</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <p class="exp-period">2025<br>(7 semaines)</p>
+        <div class="exp-body">
+          <p class="exp-title">Stage technicien automatisme</p>
+          <p class="exp-org">Akena Vérandas</p>
+          <p class="exp-desc">Programmation d'un centre de découpe automatisé et robotisation d'un poste de production. Première immersion concrète dans l'environnement industriel de l'entreprise.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">TIA Portal</span>
+            <span class="exp-tag">Robotique</span>
+            <span class="exp-tag">Automatisme</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <p class="exp-period">2024<br>(2 semaines)</p>
+        <div class="exp-body">
+          <p class="exp-title">Stage opérateur</p>
+          <p class="exp-org">O'Hara</p>
+          <p class="exp-desc">Observation et participation à la gestion de la production. Travail en équipe sur ligne, découverte du fonctionnement d'un site industriel en conditions réelles.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Production</span>
+            <span class="exp-tag">Travail d'équipe</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Louis Moreau</p>
+    <div class="footer-icons">
+      <a href="tel:+33671780595" aria-label="téléphone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a href="mailto:moreaulouis37@gmail.com" aria-label="email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.97 6.2a2 2 0 0 0 2.06 0L22 7"/></svg>
+      </a>
+      <a href="https://instagram.com/louis__mro_" aria-label="instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

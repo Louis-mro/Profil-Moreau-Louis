@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compétences — Louis Moreau</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-eyebrow { color: var(--purple); }
+  .skill-groups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 40px;
+  }
+  .skill-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+  }
+  .skill-panel h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--purple);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-panel h3::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--purple);
+    display: inline-block;
+  }
+  .skill-row { margin-bottom: 14px; }
+  .skill-row:last-child { margin-bottom: 0; }
+  .skill-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .skill-label span:last-child { color: var(--text-faint); font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+  .skill-bar-bg {
+    height: 6px;
+    background: var(--purple-bg);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    background: var(--purple);
+    border-radius: 100px;
+  }
+
+  .tools-panel {
+    grid-column: span 2;
+    background: var(--purple-bg);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+  }
+  .tools-panel h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--purple);
+    margin: 0 0 16px;
+  }
+  .tool-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tool-chip {
+    background: var(--surface);
+    border: 1px solid var(--purple-line);
+    color: var(--purple);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: 100px;
+  }
+
+  @media (max-width: 700px) {
+    .skill-groups { grid-template-columns: 1fr; }
+    .tools-panel { grid-column: span 1; }
+  }
+</style>
+</head>
+<body class="page-competences">
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span> Louis Moreau</div>
+    <nav class="main-nav">
+      <a href="index.html">accueil</a>
+      <a href="parcours.html">parcours</a>
+      <a href="experiences.html">expériences</a>
+      <a href="competences.html" class="active competences">compétences</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow page-eyebrow">Module 03 — savoir-faire</p>
+    <h1 class="page-title">Compétences</h1>
+    <p class="subtitle">Logiciels, langages, normes et savoir-faire technique.</p>
+
+    <div class="skill-groups">
+
+      <div class="skill-panel">
+        <h3>Logiciels &amp; plateformes</h3>
+        <div class="skill-row">
+          <div class="skill-label"><span>TIA Portal (Siemens)</span><span>avancé</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>Control Expert (Schneider)</span><span>intermédiaire</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 60%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>QElectroTech</span><span>notions</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 35%;"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-panel">
+        <h3>Langages &amp; programmation</h3>
+        <div class="skill-row">
+          <div class="skill-label"><span>Ladder / FBD</span><span>avancé</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>SCL / structuré</span><span>intermédiaire</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 55%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>Schémas électriques</span><span>notions</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 35%;"></div></div>
+        </div>
+      </div>
+
+      <div class="tools-panel">
+        <h3>Compétences transverses &amp; autres</h3>
+        <div class="tool-chips">
+          <span class="tool-chip">Câblage armoire électrique</span>
+          <span class="tool-chip">Robotisation</span>
+          <span class="tool-chip">Méthodes industrielles</span>
+          <span class="tool-chip">Français — natif</span>
+          <span class="tool-chip">Anglais — B1/B2</span>
+          <span class="tool-chip">Espagnol — notions</span>
+          <span class="tool-chip">Trésorier BDE ICAM</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Louis Moreau</p>
+    <div class="footer-icons">
+      <a href="tel:+33671780595" aria-label="téléphone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a href="mailto:moreaulouis37@gmail.com" aria-label="email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.97 6.2a2 2 0 0 0 2.06 0L22 7"/></svg>
+      </a>
+      <a href="https://instagram.com/louis__mro_" aria-label="instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
