@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Louis Moreau — Ingénieur automatisme</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="stylesheet" href="style.css">
 <style>
   .hero {
@@ -31,6 +32,35 @@
     display: block;
   }
   .hero-text { display: flex; gap: 22px; align-items: flex-start; }
+  .hero-badges {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .school-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 6px 14px 6px 8px;
+    font-size: 12.5px;
+    color: var(--text-soft);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .school-badge img {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+  .school-badge strong {
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+  }
   .quote {
     font-size: 15px;
     line-height: 1.75;
@@ -112,9 +142,10 @@
     .modules { grid-template-columns: 1fr; }
     .panel { padding: 28px 22px 22px; }
     h1.page-title { font-size: 30px; }
-    .hero { flex-direction: column; gap: 20px; }
+    .hero { flex-direction: column; gap: 20px; align-items: flex-start; }
     .hero-text { gap: 16px; }
     .hero-portrait { width: 84px; height: 84px; }
+    .hero-badges { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
   }
 </style>
 </head>
@@ -146,7 +177,10 @@
           <p class="subtitle" style="margin-bottom:0;">Ingénieur automatisme &amp; systèmes de contrôle</p>
         </div>
       </div>
-      <span class="status-badge"><span class="pulse"></span> en alternance</span>
+      <div class="hero-badges">
+        <span class="status-badge"><span class="pulse"></span> en alternance</span>
+        <span class="school-badge"><img src="assets/icam-logo.png" alt="ICAM"> <strong>ICAM</strong> — La Roche-sur-Yon</span>
+      </div>
     </div>
 
     <p class="quote">Étudiant ingénieur à l'ICAM site Vendée, spécialisé en automatisme et systèmes de contrôle. En alternance chez Akena Vérandas à Dompierre-sur-Yon en tant qu'ingénieur méthode — programmation TIA Portal, robotisation et optimisation de lignes de production.</p>
