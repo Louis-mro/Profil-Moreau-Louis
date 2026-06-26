@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage technicien automatisme — Akena Vérandas — Louis Moreau</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-eyebrow { color: var(--teal); }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-soft);
+    margin-bottom: 18px;
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--teal); }
+
+  /* ---- hero strip ---- */
+  .proj-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 22px;
+    margin: 36px 0 8px;
+  }
+  .proj-hero-photo {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .proj-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .proj-fact-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .proj-fact { display: flex; gap: 12px; align-items: flex-start; }
+  .proj-fact-icon {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    background: var(--teal-bg);
+    color: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .proj-fact-icon svg { width: 16px; height: 16px; }
+  .proj-fact-label { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-faint); margin: 0 0 2px; }
+  .proj-fact-value { font-size: 13.5px; font-weight: 500; color: var(--text); line-height: 1.4; }
+
+  /* ---- section ---- */
+  .proj-section { margin-top: 50px; scroll-margin-top: 100px; }
+  .proj-section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .proj-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--teal);
+    background: var(--teal-bg);
+    width: 30px; height: 30px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .proj-section-head h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 21px;
+    margin: 0;
+  }
+
+  .proj-body p { font-size: 14px; color: var(--text-soft); line-height: 1.7; margin: 0 0 14px; }
+  .proj-body p:last-child { margin-bottom: 0; }
+
+  /* recap list (replaces long task-flow) */
+  .recap-list { margin: 18px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .recap-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal-line);
+    border-radius: var(--radius-sm);
+    padding: 13px 18px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .recap-list li svg { flex-shrink: 0; margin-top: 2px; color: var(--teal); width: 15px; height: 15px; }
+
+  /* constraints grid */
+  .constraint-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 18px; }
+  .constraint-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .constraint-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: var(--teal);
+  }
+  .constraint-card ul { margin: 0; padding-left: 18px; font-size: 13px; color: var(--text-soft); line-height: 1.7; }
+  .constraint-card p { margin: 0; font-size: 13px; color: var(--text-soft); line-height: 1.7; }
+
+  /* photo pair */
+  .photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+  .photo-frame {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-faint);
+    text-align: center;
+    padding: 10px 8px 4px;
+  }
+
+  .photo-single { margin-top: 18px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+  .photo-single img { width: 100%; display: block; }
+
+  /* outcome panel */
+  .outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+  .outcome-card {
+    border-radius: var(--radius);
+    padding: 22px 24px;
+  }
+  .outcome-card.done { background: var(--teal-bg); }
+  .outcome-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .outcome-card.done h4 { color: var(--teal); }
+  .outcome-card ul { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.75; color: var(--text); }
+
+  .proj-quote {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-soft);
+    border-left: 3px solid var(--teal);
+    padding-left: 18px;
+    margin: 18px 0 0;
+  }
+
+  /* mini-mission grid */
+  .mini-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 18px; }
+  .mini-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .mini-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--text);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .mini-card h4 .mini-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+  .mini-card p { margin: 0; font-size: 12.5px; color: var(--text-soft); line-height: 1.6; }
+
+  /* ---- side cursor (vertical page indicator) ---- */
+  .side-cursor {
+    position: fixed;
+    right: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .side-cursor::before {
+    content: '';
+    position: absolute;
+    top: 15px; bottom: 15px;
+    left: 50%;
+    width: 1px;
+    background: var(--border);
+    transform: translateX(-50%);
+    z-index: 0;
+  }
+  .cursor-dot {
+    position: relative;
+    z-index: 1;
+    width: 30px; height: 30px;
+    margin: 5px 0;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--text-faint);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .cursor-dot:hover { color: var(--teal); border-color: var(--teal-line); }
+  .cursor-dot.active {
+    color: #fff;
+    background: var(--teal);
+    border-color: var(--teal);
+    transform: scale(1.15);
+    box-shadow: 0 0 0 4px var(--teal-bg);
+  }
+  .cursor-dot .cursor-tip {
+    position: absolute;
+    right: 42px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--text);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 6px 11px;
+    border-radius: 7px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+  .cursor-dot:hover .cursor-tip { opacity: 1; }
+  @media (max-width: 1240px) { .side-cursor { display: none; } }
+
+  @media (max-width: 760px) {
+    .proj-hero { grid-template-columns: 1fr; }
+    .constraint-grid { grid-template-columns: 1fr; }
+    .photo-pair { grid-template-columns: 1fr; }
+    .outcome-grid { grid-template-columns: 1fr; }
+    .mini-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body class="page-experiences">
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span> Louis Moreau</div>
+    <nav class="main-nav">
+      <a href="index.html">accueil</a>
+      <a href="parcours.html">parcours</a>
+      <a href="experiences.html" class="active experiences">expériences</a>
+      <a href="competences.html">compétences</a>
+      <a href="alternance.html">alternance</a>
+    </nav>
+  </div>
+</header>
+
+<!-- vertical page cursor -->
+<nav class="side-cursor" aria-label="navigation dans la page">
+  <a class="cursor-dot" href="#sec-01" data-target="sec-01">01<span class="cursor-tip">Contexte &amp; mission</span></a>
+  <a class="cursor-dot" href="#sec-02" data-target="sec-02">02<span class="cursor-tip">Ce que j'ai fait</span></a>
+  <a class="cursor-dot" href="#sec-03" data-target="sec-03">03<span class="cursor-tip">Robotisation des chariots</span></a>
+  <a class="cursor-dot" href="#sec-04" data-target="sec-04">04<span class="cursor-tip">Missions complémentaires</span></a>
+  <a class="cursor-dot" href="#sec-05" data-target="sec-05">05<span class="cursor-tip">Bilan</span></a>
+</nav>
+
+<main>
+  <div class="wrap">
+    <a class="back-link" href="experiences-pro.html">&larr; expériences professionnelles</a>
+    <p class="eyebrow page-eyebrow">Stage technicien automatisme — du 26 mai au 11 juillet 2025</p>
+    <h1 class="page-title">Programmation du CDU pour la nouvelle pergola BIOV2</h1>
+    <p class="subtitle">7 semaines au service méthodes d'Akena Vérandas, fabricant n°1 de vérandas en France : programmation d'un centre de découpe usinage pour la nouvelle gamme de pergolas BIOV2, et quelques projets d'amélioration en atelier.</p>
+
+    <div class="proj-hero">
+      <div class="proj-hero-photo">
+        <img src="assets/stage-akena/cdu-convoyeur.jpg" alt="CDU 2 — centre de découpe usinage d'Akena Vérandas">
+      </div>
+      <div class="proj-fact-panel">
+        <div class="proj-fact">
+          <span class="proj-fact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></span>
+          <div><p class="proj-fact-label">Mission</p><p class="proj-fact-value">Programmer les usinages, perçages et découpes des profils aluminium de la pergola BIOV2 sur le CDU 2 (centre découpe usinage)</p></div>
+        </div>
+        <div class="proj-fact">
+          <span class="proj-fact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <div><p class="proj-fact-label">Résultat</p><p class="proj-fact-value">✅ Prototype BIOV2 usiné, contrôlé et assemblé — référence pour la formation des poseurs</p></div>
+        </div>
+        <div class="proj-fact">
+          <span class="proj-fact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></span>
+          <div><p class="proj-fact-label">Compétences mobilisées</p><p class="proj-fact-value">Logiciel DUBUS, lecture de plans, contrôle qualité, conception SolidWorks, robotisation</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 01. Contexte -->
+    <div class="proj-section" id="sec-01">
+      <div class="proj-section-head">
+        <span class="proj-num">01</span>
+        <h2>Contexte &amp; mission</h2>
+      </div>
+      <div class="proj-body">
+        <p>Akena Vérandas développait au moment de mon arrivée une nouvelle gamme de pergolas bioclimatiques, BIOV2. Le bureau d'études avait déjà finalisé les profils sur SolidWorks ; ma mission, au sein du service méthodes, était de programmer leurs usinages sur le CDU 2 (centre découpe usinage) pour permettre la fabrication du prototype.</p>
+        <p>Un planning hebdomadaire de tâches m'était confié chaque lundi par le responsable de l'industrialisation, ce qui m'a permis de travailler en autonomie tout en gardant un cap clair sur l'avancement du projet.</p>
+      </div>
+    </div>
+
+    <!-- 02. Ce que j'ai fait -->
+    <div class="proj-section" id="sec-02">
+      <div class="proj-section-head">
+        <span class="proj-num">02</span>
+        <h2>Ce que j'ai fait</h2>
+      </div>
+      <div class="proj-body">
+        <p>Akena dispose de cinq CDU ; le CDU 2, piloté par le logiciel DUBUS, a été dédié au projet BIOV2. Après une formation au logiciel — qui demande beaucoup de rigueur, la moindre erreur pouvant compromettre un usinage ou la machine elle-même — j'ai programmé chaque profil à partir des plans techniques du bureau d'études, en renseignant les positions d'usinage (X, Y, Z) et le foret adapté.</p>
+      </div>
+      <ul class="recap-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Programmation des usinages sur le logiciel DUBUS, à partir des plans du bureau d'études</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Écriture des fichiers lot exécutés par la machine pour chaque profil</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tests sur le CDU 2 et contrôle dimensionnel (X, Y, Z) au pied à coulisse après chaque passage</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ajustements en cas d'écart, jusqu'à validation de tous les profils</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Transmission des profils validés au bureau d'études pour l'assemblage du prototype</li>
+      </ul>
+      <div class="photo-pair">
+        <div class="photo-frame"><img src="assets/stage-akena/cdu-interieur.jpg" alt="Intérieur du CDU 2 — têtes d'usinage et de perçage"></div>
+        <div class="photo-frame"><img src="assets/stage-akena/prototype-biov2.jpg" alt="Prototype assemblé de la pergola BIOV2"></div>
+      </div>
+      <div style="display:flex; gap:16px; margin-top:-4px;">
+        <p class="photo-caption" style="flex:1;">Têtes d'usinage, de perçage et de découpe du CDU 2</p>
+        <p class="photo-caption" style="flex:1;">Prototype BIOV2 assemblé sur site</p>
+      </div>
+      <div class="constraint-grid" style="grid-template-columns: 1fr; margin-top: 20px;">
+        <div class="constraint-card">
+          <h4>Obstacle rencontré</h4>
+          <p>Un capteur de la machine ne détectait pas les pièces de moins de 20 mm, alors que l'un des profils ne mesurait que 17 mm. J'ai travaillé avec l'équipe maintenance pour ajuster la position du capteur et poursuivre les essais.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03. Robotisation des chariots -->
+    <div class="proj-section" id="sec-03">
+      <div class="proj-section-head">
+        <span class="proj-num">03</span>
+        <h2>Robotisation des chariots</h2>
+      </div>
+      <div class="proj-body">
+        <p>En parallèle, j'ai pris en charge une demande d'amélioration remontée par les opérateurs : le transport des chariots de plaques se faisait manuellement à la sangle, un geste pénible pour le dos. J'ai proposé de réutiliser un robot tracteur inutilisé pour automatiser ce déplacement.</p>
+        <p>Après plusieurs conceptions sous SolidWorks présentées en réunion, j'ai équipé deux chariots de fourreaux et d'un timon de traction, en coordonnant l'intervention d'un soudeur et le suivi des délais fournisseur.</p>
+      </div>
+      <div class="photo-single"><img src="assets/stage-akena/chariot-fourreaux.jpg" alt="Chariot équipé de fourreaux et d'un timon de traction"></div>
+      <p class="photo-caption">Chariot équipé, prêt pour le robot tracteur</p>
+      <p class="proj-quote">Les délais fournisseurs se sont révélés bien plus longs que prévu — une bonne leçon sur l'importance d'intégrer ces aléas dès la planification.</p>
+    </div>
+
+    <!-- 04. Missions complémentaires -->
+    <div class="proj-section" id="sec-04">
+      <div class="proj-section-head">
+        <span class="proj-num">04</span>
+        <h2>Missions complémentaires</h2>
+      </div>
+      <div class="proj-body">
+        <p>Chaque semaine, des tâches ponctuelles propres à un ingénieur méthode venaient compléter mon projet principal :</p>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-card">
+          <h4><span class="mini-dot"></span>Marquage au sol</h4>
+          <p>Sécurisation des zones de passage et de chaussures obligatoires sur les deux sites.</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="mini-dot"></span>Installation Kanban</h4>
+          <p>Montage de deux racks FIFO pour fluidifier l'approvisionnement des postes de production.</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="mini-dot"></span>Gamme de montage</h4>
+          <p>Rédaction de la gamme de montage de la centrale de commande de la pergola BIOV2.</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="mini-dot"></span>Conditionnement &amp; nomenclatures</h4>
+          <p>Plans de conditionnement des profils BIOV2 et mise à jour des nomenclatures au format 2025.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05. Bilan -->
+    <div class="proj-section" id="sec-05">
+      <div class="proj-section-head">
+        <span class="proj-num">05</span>
+        <h2>Bilan</h2>
+      </div>
+      <div class="outcome-grid" style="grid-template-columns: 1fr;">
+        <div class="outcome-card done">
+          <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Compétences développées</h4>
+          <ul>
+            <li>Programmation d'un centre de découpe usinage (logiciel DUBUS, fichiers lot)</li>
+            <li>Lecture de plans techniques et contrôle dimensionnel au pied à coulisse</li>
+            <li>Conception 3D sous SolidWorks et collaboration avec un fournisseur</li>
+            <li>Autonomie, rigueur et communication avec techniciens et opérateurs</li>
+          </ul>
+        </div>
+      </div>
+      <p class="proj-quote">Ce stage m'a permis de me confronter aux responsabilités d'un ingénieur méthode et de découvrir concrètement sa place dans la chaîne de production.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Louis Moreau</p>
+    <div class="footer-icons">
+      <a href="tel:+33671780595" aria-label="téléphone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a href="mailto:moreaulouis37@gmail.com" aria-label="email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.97 6.2a2 2 0 0 0 2.06 0L22 7"/></svg>
+      </a>
+      <a href="https://instagram.com/louis__mro_" aria-label="instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/louis-moreau-b50304274/" aria-label="linkedin" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-1.33-.03-3.05-1.86-3.05-1.87 0-2.15 1.46-2.15 2.96v5.69h-3v-11h2.88v1.5h.04c.4-.76 1.39-1.56 2.86-1.56 3.06 0 3.63 2.02 3.63 4.63v6.43z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var sections = document.querySelectorAll('.proj-section[id]');
+  var dots = document.querySelectorAll('.cursor-dot');
+  if (!sections.length || !dots.length) return;
+  var map = {};
+  dots.forEach(function (d) { map[d.dataset.target] = d; });
+
+  dots.forEach(function (d) {
+    d.addEventListener('click', function (e) {
+      e.preventDefault();
+      var target = document.getElementById(d.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        dots.forEach(function (d) { d.classList.remove('active'); });
+        var dot = map[entry.target.id];
+        if (dot) dot.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(function (s) { observer.observe(s); });
+})();
+</script>
+
+</body>
+</html>

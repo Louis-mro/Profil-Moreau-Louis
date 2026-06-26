@@ -28,15 +28,17 @@
     margin: 0 0 18px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
-  .skill-panel h3::before {
-    content: '';
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--purple);
-    display: inline-block;
+  .skill-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: var(--purple-bg);
+    color: var(--purple);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
   }
+  .skill-icon svg { width: 16px; height: 16px; }
   .skill-row { margin-bottom: 14px; }
   .skill-row:last-child { margin-bottom: 0; }
   .skill-label {
@@ -70,7 +72,11 @@
     font-size: 15px;
     color: var(--purple);
     margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
+  .tools-panel .skill-icon { background: var(--surface); }
   .tool-chips { display: flex; flex-wrap: wrap; gap: 10px; }
   .tool-chip {
     background: var(--surface);
@@ -98,6 +104,7 @@
       <a href="parcours.html">parcours</a>
       <a href="experiences.html">expériences</a>
       <a href="competences.html" class="active competences">compétences</a>
+      <a href="alternance.html">alternance</a>
     </nav>
   </div>
 </header>
@@ -111,7 +118,10 @@
     <div class="skill-groups">
 
       <div class="skill-panel">
-        <h3>Logiciels &amp; plateformes</h3>
+        <h3>
+          <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></span>
+          Logiciels &amp; plateformes
+        </h3>
         <div class="skill-row">
           <div class="skill-label"><span>TIA Portal (Siemens)</span><span>avancé</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
@@ -124,10 +134,17 @@
           <div class="skill-label"><span>QElectroTech</span><span>notions</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 35%;"></div></div>
         </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>SolidWorks</span><span>notions</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 35%;"></div></div>
+        </div>
       </div>
 
       <div class="skill-panel">
-        <h3>Langages &amp; programmation</h3>
+        <h3>
+          <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+          Langages &amp; programmation
+        </h3>
         <div class="skill-row">
           <div class="skill-label"><span>Ladder / FBD</span><span>avancé</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
@@ -136,14 +153,13 @@
           <div class="skill-label"><span>SCL / structuré</span><span>intermédiaire</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 55%;"></div></div>
         </div>
-        <div class="skill-row">
-          <div class="skill-label"><span>Schémas électriques</span><span>notions</span></div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 35%;"></div></div>
-        </div>
       </div>
 
       <div class="tools-panel">
-        <h3>Compétences transverses &amp; autres</h3>
+        <h3>
+          <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          Compétences transverses &amp; autres
+        </h3>
         <div class="tool-chips">
           <span class="tool-chip">Câblage armoire électrique</span>
           <span class="tool-chip">Robotisation</span>
@@ -171,6 +187,9 @@
       </a>
       <a href="https://instagram.com/louis__mro_" aria-label="instagram" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/louis-moreau-b50304274/" aria-label="linkedin" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-1.33-.03-3.05-1.86-3.05-1.87 0-2.15 1.46-2.15 2.96v5.69h-3v-11h2.88v1.5h.04c.4-.76 1.39-1.56 2.86-1.56 3.06 0 3.63 2.02 3.63 4.63v6.43z"/></svg>
       </a>
     </div>
   </div>

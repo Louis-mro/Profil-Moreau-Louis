@@ -35,13 +35,28 @@
     gap: 22px;
     align-items: flex-start;
   }
+  .exp-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 110px;
+    flex-shrink: 0;
+  }
+  .exp-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--coral-bg);
+    color: var(--coral);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .exp-icon svg { width: 19px; height: 19px; }
   .exp-period {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12.5px;
     color: var(--coral);
     white-space: nowrap;
-    padding-top: 3px;
-    min-width: 110px;
   }
   .exp-body { flex: 1; }
   .exp-title {
@@ -62,7 +77,8 @@
     border-radius: 100px;
   }
   @media (max-width: 600px) {
-    .exp-card { flex-direction: column; gap: 8px; }
+    .exp-card { flex-direction: column; gap: 14px; }
+    .exp-meta { flex-direction: row; align-items: center; }
   }
 </style>
 </head>
@@ -76,6 +92,7 @@
       <a href="parcours.html">parcours</a>
       <a href="experiences.html" class="active experiences">expériences</a>
       <a href="competences.html">compétences</a>
+      <a href="alternance.html">alternance</a>
     </nav>
   </div>
 </header>
@@ -90,7 +107,12 @@
     <div class="exp-grid">
 
       <div class="exp-card">
-        <p class="exp-period">2023, 2024<br>&amp; 2026</p>
+        <div class="exp-meta">
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h0a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+          </div>
+          <p class="exp-period">2023, 2024<br>&amp; 2026</p>
+        </div>
         <div class="exp-body">
           <p class="exp-title">Employé saisonnier — Restauration</p>
           <p class="exp-org">Restauration saisonnière</p>
@@ -103,7 +125,12 @@
       </div>
 
       <div class="exp-card">
-        <p class="exp-period">2025</p>
+        <div class="exp-meta">
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <p class="exp-period">2025</p>
+        </div>
         <div class="exp-body">
           <p class="exp-title">Employé saisonnier — Mise en rayon</p>
           <p class="exp-org">Super U</p>
@@ -116,7 +143,12 @@
       </div>
 
       <div class="exp-card">
-        <p class="exp-period">2023</p>
+        <div class="exp-meta">
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <p class="exp-period">2023</p>
+        </div>
         <div class="exp-body">
           <p class="exp-title">Préparation militaire — Armée de terre</p>
           <p class="exp-org">Armée de terre</p>
@@ -145,6 +177,9 @@
       </a>
       <a href="https://instagram.com/louis__mro_" aria-label="instagram" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/louis-moreau-b50304274/" aria-label="linkedin" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-1.33-.03-3.05-1.86-3.05-1.87 0-2.15 1.46-2.15 2.96v5.69h-3v-11h2.88v1.5h.04c.4-.76 1.39-1.56 2.86-1.56 3.06 0 3.63 2.02 3.63 4.63v6.43z"/></svg>
       </a>
     </div>
   </div>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projet BTS — Rétrofit barquetteuse — Louis Moreau</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-eyebrow { color: var(--teal); }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-soft);
+    margin-bottom: 18px;
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--teal); }
+
+  /* ---- hero strip ---- */
+  .proj-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 22px;
+    margin: 36px 0 8px;
+  }
+  .proj-hero-photo {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .proj-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .proj-fact-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .proj-fact { display: flex; gap: 12px; align-items: flex-start; }
+  .proj-fact-icon {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    background: var(--teal-bg);
+    color: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .proj-fact-icon svg { width: 16px; height: 16px; }
+  .proj-fact-label { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-faint); margin: 0 0 2px; }
+  .proj-fact-value { font-size: 13.5px; font-weight: 500; color: var(--text); line-height: 1.4; }
+
+  /* ---- section ---- */
+  .proj-section { margin-top: 56px; }
+  .proj-section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .proj-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--teal);
+    background: var(--teal-bg);
+    width: 30px; height: 30px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .proj-section-head h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 21px;
+    margin: 0;
+  }
+
+  .proj-body p { font-size: 14px; color: var(--text-soft); line-height: 1.7; margin: 0 0 14px; }
+  .proj-body p:last-child { margin-bottom: 0; }
+
+  /* constraints grid */
+  .constraint-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+  .constraint-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .constraint-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: var(--teal);
+  }
+  .constraint-card ul { margin: 0; padding-left: 18px; font-size: 13px; color: var(--text-soft); line-height: 1.7; }
+
+  /* photo pair */
+  .photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+  .photo-frame {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .photo-frame img { width: 100%; display: block; }
+  .photo-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-faint);
+    text-align: center;
+    padding: 10px 8px 4px;
+  }
+
+  .photo-single { margin-top: 18px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+  .photo-single img { width: 100%; display: block; }
+
+  /* timeline-like task list reused */
+  .task-flow { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+  .task-row {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal-line);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+  }
+  .task-row .task-n {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+    background: var(--teal-bg);
+    width: 26px; height: 26px;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .task-row p { margin: 0; font-size: 13.5px; color: var(--text); }
+
+  /* code/table card */
+  .data-table-wrap { overflow-x: auto; margin-top: 18px; border: 1px solid var(--border); border-radius: var(--radius); }
+  table.io-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.io-table th, table.io-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.io-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-faint); background: var(--bg); }
+  table.io-table td { color: var(--text-soft); }
+  table.io-table td.var-name { color: var(--text); font-weight: 500; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  table.io-table tr:last-child td { border-bottom: none; }
+
+  /* outcome panel */
+  .outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+  .outcome-card {
+    border-radius: var(--radius);
+    padding: 22px 24px;
+  }
+  .outcome-card.done { background: var(--teal-bg); }
+  .outcome-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .outcome-card.done h4 { color: var(--teal); }
+  .outcome-card ul { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.75; color: var(--text); }
+
+  .proj-quote {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-soft);
+    border-left: 3px solid var(--teal);
+    padding-left: 18px;
+    margin: 18px 0 0;
+  }
+
+  /* video section */
+  .video-wrap {
+    margin-top: 18px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .video-wrap video {
+    width: 100%;
+    display: block;
+  }
+
+  @media (max-width: 760px) {
+    .proj-hero { grid-template-columns: 1fr; }
+    .constraint-grid { grid-template-columns: 1fr; }
+    .photo-pair { grid-template-columns: 1fr; }
+    .outcome-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body class="page-experiences">
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span> Louis Moreau</div>
+    <nav class="main-nav">
+      <a href="index.html">accueil</a>
+      <a href="parcours.html">parcours</a>
+      <a href="experiences.html" class="active experiences">expériences</a>
+      <a href="competences.html">compétences</a>
+      <a href="alternance.html">alternance</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <a class="back-link" href="experiences-pro.html">&larr; expériences professionnelles</a>
+    <p class="eyebrow page-eyebrow">Projet BTS CRSA — 2026</p>
+    <h1 class="page-title">Rétrofit de la partie commande d'une barquetteuse</h1>
+    <p class="subtitle">Don d'une machine industrielle par l'entreprise agro-alimentaire La Belle Henriette à l'école de production de l'Icam : remise à niveau complète de l'automatisme pour la rendre exploitable en formation.</p>
+
+    <div class="proj-hero">
+      <div class="proj-hero-photo">
+        <img src="assets/projet/machine-vue-ensemble.jpg" alt="Barquetteuse — vue d'ensemble de la machine">
+      </div>
+      <div class="proj-fact-panel">
+        <div class="proj-fact">
+          <span class="proj-fact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></span>
+          <div><p class="proj-fact-label">Machine</p><p class="proj-fact-value">Barquetteuse — mise en volume de barquettes carton (magasin, ventouses, colle chaude, formage par poinçon, évacuation)</p></div>
+        </div>
+        <div class="proj-fact">
+          <span class="proj-fact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+          <div><p class="proj-fact-label">Client</p><p class="proj-fact-value">Laurent Micheneau — Icam, école de production</p></div>
+        </div>
+        <div class="proj-fact">
+          <span class="proj-fact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <div><p class="proj-fact-label">Statut</p><p class="proj-fact-value">✅ Machine terminée et fonctionnelle — validée en juin 2026</p></div>
+        </div>
+        <div class="proj-fact">
+          <span class="proj-fact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></span>
+          <div><p class="proj-fact-label">Rôle</p><p class="proj-fact-value">Programmation automate (TIA Portal), schéma électrique, câblage armoire</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. Contexte -->
+    <div class="proj-section">
+      <div class="proj-section-head">
+        <span class="proj-num">01</span>
+        <h2>Contexte général</h2>
+      </div>
+      <div class="proj-body">
+        <p>L'entreprise agro-alimentaire La Belle Henriette a fait don de sa barquetteuse à l'école de production de l'Icam. L'objectif du projet était de réaliser un rétrofit complet de la partie commande pour adapter la machine aux besoins pédagogiques de l'école.</p>
+        <p>La barquetteuse met en volume des barquettes en carton à plat : alimentation par magasin, préhension par ventouses, dépose de colle chaude, formage par poinçon, puis évacuation des barquettes formées.</p>
+      </div>
+    </div>
+
+    <!-- 2. Contraintes -->
+    <div class="proj-section">
+      <div class="proj-section-head">
+        <span class="proj-num">02</span>
+        <h2>Contraintes à respecter</h2>
+      </div>
+      <div class="constraint-grid">
+        <div class="constraint-card">
+          <h4>Technique</h4>
+          <ul>
+            <li>Séparer partie commande et partie puissance</li>
+            <li>Installer un nouvel automate et une nouvelle IHM</li>
+            <li>Conserver le variateur existant</li>
+          </ul>
+        </div>
+        <div class="constraint-card">
+          <h4>Sécurité</h4>
+          <ul>
+            <li>Conformité aux normes en vigueur</li>
+            <li>Bouton d'arrêt d'urgence</li>
+            <li>Grafcet de sécurité dédié</li>
+          </ul>
+        </div>
+        <div class="constraint-card">
+          <h4>Délai</h4>
+          <ul>
+            <li>Machine fonctionnelle pour fin juin</li>
+            <li>Validation finale par le client</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Tâches réalisées -->
+    <div class="proj-section">
+      <div class="proj-section-head">
+        <span class="proj-num">03</span>
+        <h2>Tâches réalisées</h2>
+      </div>
+      <div class="task-flow">
+        <div class="task-row"><span class="task-n">1</span><p>Analyse fonctionnelle et matérielle de la machine existante</p></div>
+        <div class="task-row"><span class="task-n">2</span><p>Réalisation du schéma électrique de la partie commande</p></div>
+        <div class="task-row"><span class="task-n">3</span><p>Récupération et implantation des composants</p></div>
+        <div class="task-row"><span class="task-n">4</span><p>Réalisation du câblage complet de l'armoire de commande</p></div>
+        <div class="task-row"><span class="task-n">5</span><p>Programmation de l'automate et essais en simulation</p></div>
+        <div class="task-row"><span class="task-n">6</span><p>Intégration du programme et essais réels sur la barquetteuse</p></div>
+      </div>
+    </div>
+
+    <!-- 4. Schéma électrique -->
+    <div class="proj-section">
+      <div class="proj-section-head">
+        <span class="proj-num">04</span>
+        <h2>Schéma électrique</h2>
+      </div>
+      <div class="proj-body">
+        <p>Conception sous QElectroTech du schéma complet de la partie commande : alimentation de l'automate S7-1200, du switch Ethernet et de l'IHM Siemens, puis câblage de toutes les entrées capteurs (codeurs, capteurs vérins, boutons, fins de course).</p>
+      </div>
+      <div class="photo-pair">
+        <div class="photo-frame"><img src="assets/projet/schema-electrique-1.jpg" alt="Schéma électrique — alimentation automate, switch et IHM"></div>
+        <div class="photo-frame"><img src="assets/projet/schema-electrique-2.jpg" alt="Schéma électrique — câblage des entrées capteurs"></div>
+      </div>
+      <div style="display:flex; gap:16px; margin-top:-4px;">
+        <p class="photo-caption" style="flex:1;">Folio 5/19 — alimentation automate S7-1200, switch et IHM</p>
+        <p class="photo-caption" style="flex:1;">Folio 6/19 — câblage des entrées API (codeurs, capteurs, arrêt d'urgence)</p>
+      </div>
+
+      <div class="data-table-wrap">
+        <table class="io-table">
+          <thead><tr><th>Adresse</th><th>Variable</th><th>Rôle</th></tr></thead>
+          <tbody>
+            <tr><td>%I0.0</td><td class="var-name">Codeur_A</td><td>Angle total parcouru par le moteur depuis le démarrage</td></tr>
+            <tr><td>%I0.3</td><td class="var-name">Codeur_Z</td><td>Signal émis à chaque tour du moteur</td></tr>
+            <tr><td>%I0.4 – %I0.7</td><td class="var-name">CAP_Frm_D1/D2/G1/G2</td><td>Capteurs vérins — format carton sorti (droite / gauche)</td></tr>
+            <tr><td>%I2.0 / %I2.1</td><td class="var-name">Pince_fermee / Pince_ouverte</td><td>État de la pince de préhension</td></tr>
+            <tr><td>%I2.5</td><td class="var-name">Tempera_Colle_OK</td><td>Température de la colle suffisante pour utilisation</td></tr>
+            <tr><td>%I2.6</td><td class="var-name">Defaut_var</td><td>Signal de défaut envoyé par le variateur</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="photo-caption">Extrait du tableau d'affectation des entrées API</p>
+    </div>
+
+    <!-- 5. Armoire -->
+    <div class="proj-section">
+      <div class="proj-section-head">
+        <span class="proj-num">05</span>
+        <h2>Réalisation de l'armoire de commande</h2>
+      </div>
+      <div class="proj-body">
+        <p>Câblage complet de l'armoire à partir du schéma électrique : implantation de l'automate, du switch Ethernet, de l'alimentation et raccordement de l'ensemble des entrées/sorties sur borniers.</p>
+      </div>
+      <div class="photo-pair">
+        <div class="photo-frame"><img src="assets/projet/armoire-avant.jpg" alt="Armoire de commande vide, avant câblage"></div>
+        <div class="photo-frame"><img src="assets/projet/armoire-apres.jpg" alt="Armoire de commande câblée, après intégration des composants"></div>
+      </div>
+      <div style="display:flex; gap:16px; margin-top:-4px;">
+        <p class="photo-caption" style="flex:1;">Avant — armoire vide, borniers en attente</p>
+        <p class="photo-caption" style="flex:1;">Après — automate, switch et alimentation câblés</p>
+      </div>
+    </div>
+
+    <!-- 6. Programmation -->
+    <div class="proj-section">
+      <div class="proj-section-head">
+        <span class="proj-num">06</span>
+        <h2>Programmation de l'automate</h2>
+      </div>
+      <div class="proj-body">
+        <p>Développement du programme sous TIA Portal pour un automate S7-1200 : structuration en blocs fonctionnels (FC) par grafcet — gestion sécurité (GS), gestion cycle (GC), gestion production normale (GPN) — avec mode manuel et mode automatique.</p>
+      </div>
+      <div class="photo-single"><img src="assets/projet/tia-portal.jpg" alt="Environnement TIA Portal — bloc FC3 50-GPN"></div>
+      <p class="photo-caption">TIA Portal — bloc FC3 (50-GPN), réseaux 6 et 7 de la gestion de production normale</p>
+
+      <div class="photo-pair" style="margin-top:20px;">
+        <div class="photo-frame"><img src="assets/projet/ladder-1.jpg" alt="Logique ladder — marche moteur en mode manuel"></div>
+        <div class="photo-frame"><img src="assets/projet/ladder-2.jpg" alt="Logique ladder — verrouillage SR de cycle"></div>
+      </div>
+      <div style="display:flex; gap:16px; margin-top:-4px;">
+        <p class="photo-caption" style="flex:1;">Commande moteur en mode manuel (avance / recul)</p>
+        <p class="photo-caption" style="flex:1;">Verrouillage SR pilotant l'enchaînement des étapes</p>
+      </div>
+
+
+    </div>
+
+    <!-- 7. Bilan -->
+    <div class="proj-section">
+      <div class="proj-section-head">
+        <span class="proj-num">07</span>
+        <h2>Bilan</h2>
+      </div>
+      <div class="outcome-grid" style="grid-template-columns: 1fr;">
+        <div class="outcome-card done">
+          <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Machine terminée et fonctionnelle</h4>
+          <ul>
+            <li>Dossier électrique complet, réalisé sous QElectroTech</li>
+            <li>Armoire de commande câblée, structurée et validée</li>
+            <li>Programme automate opérationnel — mode manuel et mode automatique</li>
+            <li>Machine validée par le client en juin 2026</li>
+          </ul>
+        </div>
+      </div>
+      <p class="proj-quote">Une expérience révélatrice pour mon parcours professionnel : premier projet où j'ai mené de bout en bout l'analyse, le schéma électrique, le câblage et la programmation d'une machine réelle.</p>
+    </div>
+
+    <!-- 8. Démonstration vidéo -->
+    <div class="proj-section">
+      <div class="proj-section-head">
+        <span class="proj-num">08</span>
+        <h2>Machine en fonctionnement</h2>
+      </div>
+      <div class="proj-body">
+        <p>Démonstration de la barquetteuse en cycle automatique, après rétrofit complet de la partie commande.</p>
+      </div>
+      <div class="video-wrap">
+        <video controls muted playsinline>
+          <source src="assets/projet/machine-demo.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la lecture vidéo.
+        </video>
+      </div>
+      <p class="photo-caption">Barquetteuse en cycle automatique — juin 2026</p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Louis Moreau</p>
+    <div class="footer-icons">
+      <a href="tel:+33671780595" aria-label="téléphone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a href="mailto:moreaulouis37@gmail.com" aria-label="email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.97 6.2a2 2 0 0 0 2.06 0L22 7"/></svg>
+      </a>
+      <a href="https://instagram.com/louis__mro_" aria-label="instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/louis-moreau-b50304274/" aria-label="linkedin" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-1.33-.03-3.05-1.86-3.05-1.87 0-2.15 1.46-2.15 2.96v5.69h-3v-11h2.88v1.5h.04c.4-.76 1.39-1.56 2.86-1.56 3.06 0 3.63 2.02 3.63 4.63v6.43z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

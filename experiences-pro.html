@@ -25,33 +25,7 @@
     gap: 16px;
     margin-top: 40px;
   }
-  .exp-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--coral-line);
-    border-radius: var(--radius);
-    padding: 24px 26px;
-    display: flex;
-    gap: 22px;
-    align-items: flex-start;
-  }
-  .exp-period {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12.5px;
-    color: var(--coral);
-    white-space: nowrap;
-    padding-top: 3px;
-    min-width: 110px;
-  }
-  .exp-body { flex: 1; }
-  .exp-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 17px;
-    margin: 0 0 3px;
-  }
   .exp-org { font-size: 13.5px; color: var(--text-soft); margin: 0 0 12px; }
-  .exp-desc { font-size: 13.5px; color: var(--text-soft); line-height: 1.65; margin: 0 0 14px; }
   .exp-tags { display: flex; gap: 8px; flex-wrap: wrap; }
   .exp-tag {
     font-family: 'JetBrains Mono', monospace;
@@ -61,8 +35,61 @@
     padding: 4px 10px;
     border-radius: 100px;
   }
+
+  /* ---- projet card (lien vers page détail) ---- */
+  .proj-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    gap: 0;
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .proj-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(0,0,0,0.28); }
+  .proj-card-photo { width: 220px; flex-shrink: 0; }
+  .proj-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .proj-card-photo--soon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background:
+      repeating-linear-gradient(135deg, var(--coral-bg) 0 14px, transparent 14px 28px),
+      var(--bg);
+    color: var(--coral);
+  }
+  .proj-card-photo--soon svg { width: 30px; height: 30px; opacity: 0.85; }
+  .proj-card-photo--soon span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--coral);
+    opacity: 0.85;
+  }
+  .proj-card-body { padding: 22px 26px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .proj-card-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    background: var(--teal-bg);
+    display: inline-flex;
+    padding: 3px 10px;
+    border-radius: 100px;
+    width: fit-content;
+  }
+  .proj-card-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; margin: 2px 0 0; }
+  .proj-card-desc { font-size: 13.5px; color: var(--text-soft); line-height: 1.6; margin: 0; }
+  .proj-card-link { font-size: 13px; font-weight: 600; color: var(--teal); display: flex; align-items: center; gap: 5px; margin-top: 6px; }
+  .proj-card-eyebrow.is-current { color: var(--coral); background: var(--coral-bg); }
+  .proj-card.no-link { cursor: default; }
+  .proj-card.no-link:hover { transform: none; box-shadow: none; }
   @media (max-width: 600px) {
-    .exp-card { flex-direction: column; gap: 8px; }
+    .proj-card { flex-direction: column; }
+    .proj-card-photo { width: 100%; height: 160px; }
   }
 </style>
 </head>
@@ -76,6 +103,7 @@
       <a href="parcours.html">parcours</a>
       <a href="experiences.html" class="active experiences">expériences</a>
       <a href="competences.html">compétences</a>
+      <a href="alternance.html">alternance</a>
     </nav>
   </div>
 </header>
@@ -85,50 +113,65 @@
     <a class="back-link" href="experiences.html">&larr; toutes les expériences</a>
     <p class="eyebrow page-eyebrow">Module 02a — terrain industriel</p>
     <h1 class="page-title">Expériences professionnelles</h1>
-    <p class="subtitle">Alternance et stages en lien avec l'automatisme et les méthodes industrielles.</p>
+    <p class="subtitle">Stages en lien avec l'automatisme et les méthodes industrielles — à la recherche d'une alternance ingénieur dès septembre 2026.</p>
 
     <div class="exp-grid">
 
-      <div class="exp-card">
-        <p class="exp-period">Sept. 2026<br>— en cours</p>
-        <div class="exp-body">
-          <p class="exp-title">Ingénieur méthode — Alternance</p>
-          <p class="exp-org">Akena Vérandas, Dompierre-sur-Yon</p>
-          <p class="exp-desc">Alternance de 3 ans au sein du service méthodes. Optimisation des procédés de fabrication, programmation d'équipements automatisés et participation à la robotisation des lignes de production.</p>
-          <div class="exp-tags">
+      <a class="proj-card" href="alternance.html">
+        <div class="proj-card-photo" style="background: linear-gradient(135deg, #1a2a3a 0%, #0f1e2e 100%); display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="width:48px;height:48px;opacity:0.85;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <div class="proj-card-body">
+          <span class="proj-card-eyebrow is-current">Recherche active</span>
+          <p class="proj-card-title">Ingénieur méthode — Alternance</p>
+          <p class="exp-org" style="margin:0;">À la recherche d'une entreprise d'accueil</p>
+          <p class="proj-card-desc">Recherche d'une alternance de 3 ans en cycle ingénieur, dans le domaine des méthodes industrielles, de la programmation d'équipements automatisés et de la robotisation des lignes de production.</p>
+          <div class="exp-tags" style="margin-top:4px;">
             <span class="exp-tag">TIA Portal</span>
             <span class="exp-tag">Control Expert</span>
             <span class="exp-tag">Méthodes industrielles</span>
           </div>
+          <span class="proj-card-link" style="color:var(--coral);">voir les infos alternance &rarr;</span>
         </div>
-      </div>
+      </a>
 
-      <div class="exp-card">
-        <p class="exp-period">2025<br>(7 semaines)</p>
-        <div class="exp-body">
-          <p class="exp-title">Stage technicien automatisme</p>
-          <p class="exp-org">Akena Vérandas</p>
-          <p class="exp-desc">Programmation d'un centre de découpe automatisé et robotisation d'un poste de production. Première immersion concrète dans l'environnement industriel de l'entreprise.</p>
-          <div class="exp-tags">
-            <span class="exp-tag">TIA Portal</span>
-            <span class="exp-tag">Robotique</span>
-            <span class="exp-tag">Automatisme</span>
-          </div>
+      <a class="proj-card" href="projet-barquetteuse.html">
+        <div class="proj-card-photo">
+          <img src="assets/projet/machine-vue-ensemble.jpg" alt="Barquetteuse — projet BTS de rétrofit automatisme">
         </div>
-      </div>
+        <div class="proj-card-body">
+          <span class="proj-card-eyebrow">Projet BTS CRSA — 2026</span>
+          <p class="proj-card-title">Rétrofit de la partie commande d'une barquetteuse</p>
+          <p class="proj-card-desc">Schéma électrique, câblage de l'armoire de commande et programmation TIA Portal pour remettre en service une machine industrielle donnée à l'école par l'entreprise La Belle Henriette. Machine aujourd'hui terminée et fonctionnelle.</p>
+          <span class="proj-card-link">voir le projet en détail &rarr;</span>
+        </div>
+      </a>
 
-      <div class="exp-card">
-        <p class="exp-period">2024<br>(2 semaines)</p>
-        <div class="exp-body">
-          <p class="exp-title">Stage opérateur</p>
-          <p class="exp-org">O'Hara</p>
-          <p class="exp-desc">Observation et participation à la gestion de la production. Travail en équipe sur ligne, découverte du fonctionnement d'un site industriel en conditions réelles.</p>
-          <div class="exp-tags">
-            <span class="exp-tag">Production</span>
-            <span class="exp-tag">Travail d'équipe</span>
-          </div>
+      <a class="proj-card" href="stage-akena.html">
+        <div class="proj-card-photo">
+          <img src="assets/stage-akena/cdu-interieur.jpg" alt="Stage technicien automatisme — Akena Vérandas">
         </div>
-      </div>
+        <div class="proj-card-body">
+          <span class="proj-card-eyebrow">2025 — 7 semaines</span>
+          <p class="proj-card-title">Stage technicien automatisme</p>
+          <p class="exp-org" style="margin:0;">Akena Vérandas</p>
+          <p class="proj-card-desc">Programmation d'un centre de découpe automatisé et robotisation d'un poste de production. Première immersion concrète dans l'environnement industriel de l'entreprise.</p>
+          <span class="proj-card-link">voir le stage en détail &rarr;</span>
+        </div>
+      </a>
+
+      <a class="proj-card" href="stage-biohabitat.html">
+        <div class="proj-card-photo">
+          <img src="assets/stage-biohabitat/usine-givrand.jpg" alt="Stage opérateur — Bio Habitat">
+        </div>
+        <div class="proj-card-body">
+          <span class="proj-card-eyebrow">2024 — 2 semaines</span>
+          <p class="proj-card-title">Stage opérateur</p>
+          <p class="exp-org" style="margin:0;">Bio Habitat (groupe Bénéteau)</p>
+          <p class="proj-card-desc">Observation et participation à la gestion de la production. Travail en équipe sur ligne, découverte du fonctionnement d'un site industriel en conditions réelles.</p>
+          <span class="proj-card-link">voir le stage en détail &rarr;</span>
+        </div>
+      </a>
 
     </div>
   </div>
@@ -146,6 +189,9 @@
       </a>
       <a href="https://instagram.com/louis__mro_" aria-label="instagram" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/louis-moreau-b50304274/" aria-label="linkedin" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-1.33-.03-3.05-1.86-3.05-1.87 0-2.15 1.46-2.15 2.96v5.69h-3v-11h2.88v1.5h.04c.4-.76 1.39-1.56 2.86-1.56 3.06 0 3.63 2.02 3.63 4.63v6.43z"/></svg>
       </a>
     </div>
   </div>
