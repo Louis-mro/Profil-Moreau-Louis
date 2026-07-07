@@ -74,7 +74,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .proj-fact-value { font-size: 13.5px; font-weight: 500; color: var(--text); line-height: 1.4; }
 
   /* ---- section ---- */
-  .proj-section { margin-top: 56px; }
+  .proj-section { margin-top: 56px; scroll-margin-top: 100px; }
   .proj-section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
   .proj-num {
     font-family: 'Space Grotesk', sans-serif;
@@ -204,6 +204,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: block;
   }
 
+  /* ---- side cursor (vertical page indicator) ---- */
+  .side-cursor {
+    position: fixed;
+    right: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .side-cursor::before {
+    content: '';
+    position: absolute;
+    top: 15px; bottom: 15px;
+    left: 50%;
+    width: 1px;
+    background: var(--border);
+    transform: translateX(-50%);
+    z-index: 0;
+  }
+  .cursor-dot {
+    position: relative;
+    z-index: 1;
+    width: 30px; height: 30px;
+    margin: 5px 0;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--text-faint);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .cursor-dot:hover { color: var(--teal); border-color: var(--teal-line); }
+  .cursor-dot.active {
+    color: #fff;
+    background: var(--teal);
+    border-color: var(--teal);
+    transform: scale(1.15);
+    box-shadow: 0 0 0 4px var(--teal-bg);
+  }
+  .cursor-dot .cursor-tip {
+    position: absolute;
+    right: 42px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--text);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 6px 11px;
+    border-radius: 7px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+  .cursor-dot:hover .cursor-tip { opacity: 1; }
+  @media (max-width: 1240px) { .side-cursor { display: none; } }
+
   @media (max-width: 760px) {
     .proj-hero { grid-template-columns: 1fr; }
     .constraint-grid { grid-template-columns: 1fr; }
@@ -231,6 +295,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </nav>
   </div>
 </header>
+
+<!-- vertical page cursor -->
+<nav class="side-cursor" aria-label="navigation dans la page">
+  <a class="cursor-dot" href="#sec-01" data-target="sec-01">01<span class="cursor-tip">Contexte général</span></a>
+  <a class="cursor-dot" href="#sec-02" data-target="sec-02">02<span class="cursor-tip">Contraintes à respecter</span></a>
+  <a class="cursor-dot" href="#sec-03" data-target="sec-03">03<span class="cursor-tip">Tâches réalisées</span></a>
+  <a class="cursor-dot" href="#sec-04" data-target="sec-04">04<span class="cursor-tip">Schéma électrique</span></a>
+  <a class="cursor-dot" href="#sec-05" data-target="sec-05">05<span class="cursor-tip">Armoire de commande</span></a>
+  <a class="cursor-dot" href="#sec-06" data-target="sec-06">06<span class="cursor-tip">Programmation automate</span></a>
+  <a class="cursor-dot" href="#sec-07" data-target="sec-07">07<span class="cursor-tip">Bilan</span></a>
+  <a class="cursor-dot" href="#sec-08" data-target="sec-08">08<span class="cursor-tip">Machine en fonctionnement</span></a>
+</nav>
 
 <main>
   <div class="wrap">
@@ -264,7 +340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- 1. Contexte -->
-    <div class="proj-section">
+    <div class="proj-section" id="sec-01">
       <div class="proj-section-head">
         <span class="proj-num">01</span>
         <h2>Contexte général</h2>
@@ -276,7 +352,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- 2. Contraintes -->
-    <div class="proj-section">
+    <div class="proj-section" id="sec-02">
       <div class="proj-section-head">
         <span class="proj-num">02</span>
         <h2>Contraintes à respecter</h2>
@@ -309,7 +385,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- 3. Tâches réalisées -->
-    <div class="proj-section">
+    <div class="proj-section" id="sec-03">
       <div class="proj-section-head">
         <span class="proj-num">03</span>
         <h2>Tâches réalisées</h2>
@@ -325,7 +401,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- 4. Schéma électrique -->
-    <div class="proj-section">
+    <div class="proj-section" id="sec-04">
       <div class="proj-section-head">
         <span class="proj-num">04</span>
         <h2>Schéma électrique</h2>
@@ -359,7 +435,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- 5. Armoire -->
-    <div class="proj-section">
+    <div class="proj-section" id="sec-05">
       <div class="proj-section-head">
         <span class="proj-num">05</span>
         <h2>Réalisation de l'armoire de commande</h2>
@@ -378,7 +454,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- 6. Programmation -->
-    <div class="proj-section">
+    <div class="proj-section" id="sec-06">
       <div class="proj-section-head">
         <span class="proj-num">06</span>
         <h2>Programmation de l'automate</h2>
@@ -402,7 +478,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- 7. Bilan -->
-    <div class="proj-section">
+    <div class="proj-section" id="sec-07">
       <div class="proj-section-head">
         <span class="proj-num">07</span>
         <h2>Bilan</h2>
@@ -422,7 +498,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- 8. Démonstration vidéo -->
-    <div class="proj-section">
+    <div class="proj-section" id="sec-08">
       <div class="proj-section-head">
         <span class="proj-num">08</span>
         <h2>Machine en fonctionnement</h2>
@@ -461,6 +537,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </footer>
+
+<script>
+(function () {
+  var sections = document.querySelectorAll('.proj-section[id]');
+  var dots = document.querySelectorAll('.cursor-dot');
+  if (!sections.length || !dots.length) return;
+  var map = {};
+  dots.forEach(function (d) { map[d.dataset.target] = d; });
+
+  dots.forEach(function (d) {
+    d.addEventListener('click', function (e) {
+      e.preventDefault();
+      var target = document.getElementById(d.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        dots.forEach(function (d) { d.classList.remove('active'); });
+        var dot = map[entry.target.id];
+        if (dot) dot.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(function (s) { observer.observe(s); });
+})();
+</script>
 
 <script src="https://dashboard.causeriebot.com/widget.js" data-id="1ee7405c-5bf6-4d83-9b55-674a49365535" data-url="https://dashboard.causeriebot.com"></script>
 </body>

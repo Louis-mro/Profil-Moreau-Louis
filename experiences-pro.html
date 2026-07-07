@@ -87,6 +87,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     color: var(--coral);
     opacity: 0.85;
   }
+  .proj-card-photo--confidential {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--bg);
+    color: var(--text-faint);
+  }
+  .proj-card-photo--confidential svg { width: 28px; height: 28px; opacity: 0.7; }
+  .proj-card-photo--confidential span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--text-faint);
+  }
   .proj-card-body { padding: 22px 26px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
   .proj-card-eyebrow {
     font-family: 'JetBrains Mono', monospace;
@@ -102,6 +119,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .proj-card-desc { font-size: 13.5px; color: var(--text-soft); line-height: 1.6; margin: 0; }
   .proj-card-link { font-size: 13px; font-weight: 600; color: var(--teal); display: flex; align-items: center; gap: 5px; margin-top: 6px; }
   .proj-card-eyebrow.is-current { color: var(--coral); background: var(--coral-bg); }
+  .proj-card-eyebrow.is-confirmed { color: var(--teal); background: var(--teal-bg); }
   .proj-card.no-link { cursor: default; }
   .proj-card.no-link:hover { transform: none; box-shadow: none; }
   @media (max-width: 600px) {
@@ -135,7 +153,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="back-link" href="experiences.html">&larr; toutes les expériences</a>
     <p class="eyebrow page-eyebrow">Module 02a — terrain industriel</p>
     <h1 class="page-title">Expériences professionnelles</h1>
-    <p class="subtitle">Stages en lien avec l'automatisme et les méthodes industrielles — à la recherche d'une alternance ingénieur dès septembre 2026.</p>
+    <p class="subtitle">Stages en lien avec l'automatisme et les méthodes industrielles — alternance ingénieur méthode validée chez Akena Vérandas dès septembre 2026.</p>
 
     <div class="exp-grid">
 
@@ -144,16 +162,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="width:48px;height:48px;opacity:0.85;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
         </div>
         <div class="proj-card-body">
-          <span class="proj-card-eyebrow is-current">Recherche active</span>
+          <span class="proj-card-eyebrow is-confirmed">Alternance validée</span>
           <p class="proj-card-title">Ingénieur méthode — Alternance</p>
-          <p class="exp-org" style="margin:0;">À la recherche d'une entreprise d'accueil</p>
-          <p class="proj-card-desc">Recherche d'une alternance de 3 ans en cycle ingénieur, dans le domaine des méthodes industrielles, de la programmation d'équipements automatisés et de la robotisation des lignes de production.</p>
+          <p class="exp-org" style="margin:0;">Akena Vérandas — dès septembre 2026</p>
+          <p class="proj-card-desc">Alternance de 3 ans en cycle ingénieur chez Akena Vérandas, dans le domaine des méthodes industrielles, de la programmation d'équipements automatisés et de la robotisation des lignes de production.</p>
           <div class="exp-tags" style="margin-top:4px;">
             <span class="exp-tag">TIA Portal</span>
             <span class="exp-tag">Control Expert</span>
             <span class="exp-tag">Méthodes industrielles</span>
           </div>
-          <span class="proj-card-link" style="color:var(--coral);">voir les infos alternance &rarr;</span>
+          <span class="proj-card-link" style="color:var(--teal);">voir les infos alternance &rarr;</span>
         </div>
       </a>
 
@@ -171,7 +189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <a class="proj-card" href="stage-akena.html">
         <div class="proj-card-photo">
-          <img src="assets/stage-akena/cdu-interieur.jpg" alt="Stage technicien automatisme — Akena Vérandas">
+          <img src="assets/stage-akena/akena-batiment.png" alt="Site industriel Akena Vérandas">
         </div>
         <div class="proj-card-body">
           <span class="proj-card-eyebrow">2025 — 7 semaines</span>
